@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <!-- commented out for implementation in the future -->
+      <!-- <div class="col l4 right s0 m0 recent-activity">
+        <h5 class="center">Recent Activity</h5>
+
+        <table>
+          <thead>
+            <tr>
+              <th data-field="id"></th>
+              <th data-field="name"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="chip">
+                  <img alt="User.Name" class="responsive-img circle" height="50px" src="assets/rambo.jpg" width="50px">
+                </div>
+              </td>
+              <td>
+                <a href="User:id">user.firstName</a>
+                has completed the Logos Program!
+                <br>
+                <h6 class="grey-text darken-3">Sept. 17, 2015</h6>
+              </td>
+            </tr>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div> -->
+      <div class="col l12 m12 s12">
+        <h5 class="center">Approval Queue</h5>
+        <table>
+          <thead>
+            <tr>
+              <th class="center" data-field="id">Athlete</th>
+              <th class="center" data-field="name">Movement Approving</th>
+              <th class="center" data-field="price">Action</th>
+            </tr>
+          </thead>
+          <tbody ng-repeat="evaluation in pendingEvaluations">
+            <!-- ng repeat the following section -->
+            <tr>
+              <td class="center">{{evaluation.firstName}} {{evaluation.lastName}}</td>
+              <td class="center">{{evaluation.name}}</td>
+              <td>
+                <div class="approval-button-padding center">
+                  <a class="waves-effect btn-flat grey lighten-2" ng-click="submitMovementApproval(evaluation)">Approve</a>
+                </div>
+              </td>
+            </tr>
+            <!-- end ng repeat. Data below is just dummy data and can be deleted -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

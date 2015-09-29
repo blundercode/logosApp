@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <div class="col s12 center">
+<!-- progress chart-->
+        <div class="c100 p{{ logosPercent }} center">
+          <span>{{ logosPercent }}%</span>
+          <div class="slice">
+            <div class="bar"></div>
+            <div class="fill"></div>
+          </div>
+        </div>
+<!-- end progress chart-->
+        <h5 class="center">Logos Progress</h5>
+
+        <ul class="tabs">
+          <li class=" tab col s4">
+            <a class="active blue darken-3 white-text" href="#Step1">Step 1</a>
+          </li>
+          <li class="tab col s4">
+<!-- blue tab background if unlocked -->
+            <div ng-if="step1">
+              <a class="active blue darken-3 white-text" href="#Step2">Step 2</a>
+            </div>
+<!-- grey background if not unlocked -->
+            <div ng-if="!step1">
+              <p class="grey-text text-lighten-2">Step 2</p>
+            </li>
+            <li class="tab col s4" disabled>
+<!-- blue tab background if unlocked -->
+              <div ng-if="step2">
+                <a class="active blue darken-3 white-text" href="#Step3">Step 3</a>
+              </div>
+<!-- grey background if not unlocked -->
+              <div ng-if="!step2">
+                <p class="grey-text text-lighten-2">Step 3</p>
+              </li>
+            </ul>
+
+            <br>
+            <h5>Physical</h5>
+
+            <ul class="collapsible" data-collapsible="accordion">
+<!-- begining of movement -->
+              <li ng-repeat="movement in movements">
+                <div class="collapsible-header" ng-if="!movement.complete">{{movement.name}}</div>
+                <div class="collapsible-header grey lighten-1" ng-if="movement.complete">{{movement.name}}
+                  - <b>Complete</b></div>
+
+                <div class="collapsible-body">
+                  <h5>Progressions</h5>
+                  <div ng-repeat="progression in movement.content.progressions">
+                    <input id="{{progression._id}}" type="checkbox" ng-checked="progression.complete" ng-click="changeStatus(progression, movement)"/>
+                    <label for="{{progression._id}}">{{progression.explanation}}</label>
+                  </div>
+                    <!-- button enabled by default -->
+                    <div ng-if="!movement.complete">
+                      <p>
+                        <button class="btn waves-effect waves blue darken-3 center" ng-click="submitMovementApproval(movement._id)" type="submit"> Complete Movement</button>
+                      </p>
+                    </div>
+                    <br>
+                </div>
+              </li>
+<!-- End of Movement -->
+            </ul>
+
+<!-- Script for collapsible list  and modals-->
+            <script>
+              //script for collapsible list
+              $(document).ready(function() {
+                $('.collapsible').collapsible({
+                  accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+                });
+              });
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
